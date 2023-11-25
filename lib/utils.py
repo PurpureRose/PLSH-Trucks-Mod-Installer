@@ -124,7 +124,8 @@ class ModInstallerCore:
 
         source_path = os.path.join(self.dw_mods_dir, 'mod')
         destination_path = os.path.join(self.game_dir, 'mod')
-       
+        os.makedirs(destination_path, exist_ok=True)
+        
         pattern_a = r'active_mods:\s+(\S+)'             #active_mods: x
         pattern_b = r'active_mods(?:\[\d+\]?: "[^"]+")' #active_mods[x]: 'sample_text'
         
