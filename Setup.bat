@@ -15,7 +15,7 @@ echo Python installation complete.
 echo Starting pip and libraies install..
 
 rem Run pip
-%PYTHON_INSTALLER_DIR%\python.exe %GET_PIP_SCRIPT%
+%PYTHON_INSTALLER_DIR%\%GET_PIP_SCRIPT%
 
 echo Install complete!
 
