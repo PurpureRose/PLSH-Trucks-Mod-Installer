@@ -30,7 +30,7 @@ set "GET_LIB_SCRIPT=install-libs.py"
 
 echo Python installer found: %PYTHON_INSTALLER%
 
-echo Installing Python %PYTHON_VERSION%, thank you for patience...
+echo Installing Python %PYTHON_VERSION%, it will take some time, please wait. Thank you for patience...
 
 start /wait "" "%PYTHON_INSTALLER%" /quiet InstallAllUsers=1 PrependPath=1
 
