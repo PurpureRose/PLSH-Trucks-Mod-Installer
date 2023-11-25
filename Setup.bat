@@ -45,13 +45,13 @@ echo Now starting pip and libraries install...
 timeout /t 3 /nobreak >nul
 
 :: Run pip
-python %PYTHON_INSTALLER_DIR%\%GET_PIP_SCRIPT%
+python "%PYTHON_INSTALLER_DIR%\%GET_PIP_SCRIPT%"
 
 :: Wait for a few seconds
 timeout /t 3 /nobreak >nul
 
 :: Run pip
-python %PYTHON_INSTALLER_DIR%\%GET_LIB_SCRIPT%
+python "%PYTHON_INSTALLER_DIR%\%GET_LIB_SCRIPT%"
 echo Install complete!
 
 :: Pause to keep the command prompt window open
