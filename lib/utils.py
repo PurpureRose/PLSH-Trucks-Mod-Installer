@@ -30,9 +30,9 @@ class ModInstallerCore:
         documents_default = os.path.join(home_dir, 'Documents' or 'Документы')
         documents_onedrive = os.path.join((os.path.join(home_dir, 'OneDrive')), 'Documents' or 'Документы') 
         
-        if os.path.exists(os.path.join(documents_default, 'Euro Truck Simulator 2' or 'American Truck Simulator')):
+        if os.path.exists(os.path.join(documents_default, 'Euro Truck Simulator 2')) or os.path.exists(os.path.join(documents_default, 'American Truck Simulator')):
             self.documents = documents_default
-        elif os.path.exists(os.path.join(documents_onedrive, 'Euro Truck Simulator 2' or 'American Truck Simulator')):
+        elif os.path.exists(os.path.join(documents_onedrive, 'Euro Truck Simulator 2')) or os.path.exists(os.path.join(documents_onedrive, 'American Truck Simulator')):
             self.documents = documents_onedrive
         
         self.data_folder = os.path.join(self.app_dir, 'data')
