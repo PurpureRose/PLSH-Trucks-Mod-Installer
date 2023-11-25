@@ -142,6 +142,7 @@ class GuiFunctions:
 
         self.maingui.progress_bar["value"] = progress
 
+
 if __name__ == "__main__":
   ModInstallerGui()
   GuiFunctions()

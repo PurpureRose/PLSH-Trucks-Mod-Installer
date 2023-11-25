@@ -15,7 +15,7 @@ class ModInstallerApp:
    
         self.selected_tab = 0                       # Вкладка по умолчанию
 
-        self.gui.tab_manager.bind("<<NotebookTabChanged>>", self.on_tab_selection) # привязываем функцию к событию смены вкладки
+        self.gui.tab_manager.bind("<<NotebookTabChanged>>", self.on_tab_selection) # привязываем функцию к событию смены вкладки 
         self.gui.ets2_profiles_listbox.bind("<<ListboxSelect>>")                   # привязываем событие выбора элемента в списке
 
         self.profiles_data = {} # Информация про профили тута
@@ -47,10 +47,15 @@ class ModInstallerApp:
         if self.selected_tab == 0:
             self.profiles_listbox = self.gui.ets2_profiles_listbox
         elif self.selected_tab == 1:
-            self.profiles_listbox = self.gui.ats_profiles_listbox
-            
+            self.profiles_listbox = self.gui.ats_profiles_listbox  
         
         self.profiles_data.clear() # Чистка листа профилей на всякий случай
+
+        self.app.download_mods_check() #Чекаем на предмет уже скачанных модов
+        if self.app.mods_downloaded == True:
+            self.gui.bottom_log.configure(text='Моды уже скачанны', foreground='')
+        elif self.app.mods_downloaded == False:
+            self.gui.bottom_log.configure(text='Моды не скачанны', foreground='')
 
     def profile_locator(self):
 
@@ -61,7 +66,6 @@ class ModInstallerApp:
 
         for profile_name in self.profiles_data:
             self.profiles_listbox.insert(ttk.END, f"Профиль: {profile_name}")
-        self.gui.bottom_log.configure(text='', foreground='')
 
     def download_mods(self):
 

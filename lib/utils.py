@@ -73,7 +73,6 @@ class ModInstallerCore:
                             self.profiles[self.profile_name] = self.profile_path                 #Запись в словарь имени профиля с прикреплённым к нему расположением онного                  
 
     def download_mods(self):
-        
         try: #Чистка старых фалов             
             for filename in os.scandir(self.dw_mods_dir):
                 os.remove(filename)
@@ -115,7 +114,6 @@ class ModInstallerCore:
         os.remove(self.downloaded_file)  
     
     def install_mods(self, profile_name, profile_location):
-        
         self.profile_name = profile_name
         self.profile_location = profile_location
 
@@ -145,7 +143,6 @@ class ModInstallerCore:
             profilefile.write(export_profile)
 
     def export_mods(self, profile_name, profile_location, export_location):
-
         self.profile_name = profile_name
         self.profile_location = profile_location
         self.export_locaion = export_location
@@ -171,7 +168,7 @@ class ModInstallerCore:
         loadorder_mods = '\n'.join(re.findall(pattern_b, re.sub(pattern_a, '', ('\n'.join(re.findall(pattern_b, profile)))))) #Поиск не воркшоповских модов
         export_mods = re.findall(pattern_c, loadorder_mods)
 
-        mods_files =  {os.path.splitext(file)[0] for file in os.listdir(export_mods_path)} #Список модов без разшерения файла в папке с модами
+        mods_files = {os.path.splitext(file)[0] for file in os.listdir(export_mods_path)} #Список модов без разшерения файла в папке с модами
 
         with open(manifest_file, 'w') as manifestfile:
             manifestfile.write(loadorder_formated)
@@ -187,7 +184,6 @@ class ModInstallerCore:
                     archive.write(mod_path, os.path.join('mod', os.path.basename(mod_path)))
 
     def settings_url_edit(self, new_ets_id, new_ats_id):
-        
         self.new_ets_id = new_ets_id
         self.new_ats_id = new_ats_id
 
@@ -234,7 +230,24 @@ class ModInstallerCore:
         try:
             os.remove(self.downloaded_file)
         except: pass
-            
+
+    def download_mods_check(self):
+        pattern_a = r'active_mods(?:\[\d+\]?: "mod_workshop_package.[^"]+")' #active_mods[x]: '"mod_workshop_package.xxx|sample_text'
+        pattern_b = r'active_mods(?:\[\d+\]?: "[^"]+")'                      #active_mods[x]: 'sample_text'
+        pattern_c = r': "(.*?)\|'                                            #'"sample_text/'
+        try:
+            loadorder_path = os.path.join(self.dw_mods_dir, 'loadorder.txt')
+            with open(loadorder_path, 'r') as manifestfile:
+                manifest = manifestfile.read()
+
+            loadorder_mods = '\n'.join(re.findall(pattern_b, re.sub(pattern_a, '', ('\n'.join(re.findall(pattern_b, manifest)))))) #Поиск не воркшоповских модов
+            manifest_mods = re.findall(pattern_c, loadorder_mods)
+
+            mods_count = {os.path.splitext(file)[0] for file in os.listdir(self.dw_mods_dir + '\mod')}
+
+            if set(manifest_mods) == mods_count:
+                self.mods_downloaded = True
+        except: self.mods_downloaded = False
 
 if __name__ == "__main__":
   ModInstallerCore()
