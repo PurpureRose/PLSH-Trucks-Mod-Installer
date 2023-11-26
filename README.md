@@ -9,6 +9,7 @@
 ![main_menu](https://github.com/PurpureRose/PLSH-Trucks-Mod-Installer/assets/148472951/64c1f081-0c5e-4cb3-912e-84ac3ab68f48)
 3. Нажми на "Изменить профиль"!
 4. В параметре "Использовать облако Steam" УБЕРИ галочку!
+![profile_settings](https://github.com/PurpureRose/PLSH-Trucks-Mod-Installer/assets/148472951/f8b0a82b-11dd-49da-97e3-45ba7eb33492)
 
 После этого сохранения в облаке останутся, не переживайте. Их можно будет всегда вернуть вручную из стима
 ## Как пользоваться
