@@ -28,9 +28,6 @@ class ModInstallerCore:
         home_dir = os.path.join(os.path.expanduser("~")) #директория виндовских юзеверей
         onedrive_dir = os.path.join(home_dir, 'OneDrive')
 
-        #if os.path.exists(os.path.join(home_dir, 'Documents')):
-             # documents_default = os.path.join(home_dir, 'Documents')
-       # else: documents_default = os.path.join(home_dir, 'Документы')
         documents_default = os.path.join(home_dir, 'Documents' if os.path.exists(os.path.join(home_dir, 'Documents')) else 'Документы')
 
         documents_onedrive = os.path.join(onedrive_dir, 'Documents' if os.path.exists(os.path.join(onedrive_dir, 'Documents')) else 'Документы')

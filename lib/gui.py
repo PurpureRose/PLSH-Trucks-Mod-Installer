@@ -1,6 +1,5 @@
 import tkinter as tk
 import ttkbootstrap as ttk
-from tkinter.scrolledtext import ScrolledText
 
 class ModInstallerGui:
     def __init__(self, root):
